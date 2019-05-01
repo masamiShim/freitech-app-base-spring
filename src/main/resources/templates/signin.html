@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/signin.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<th:block layout:fragment="contents">
+    <div class="uk-align-center uk-height-1-1 uk-width-1-2">
+        <div class="uk-position-center uk-margin-small uk-width-1-1">
+            <form class="uk-form-stacked" th:action="@{/signin}" th:object="${form}" method="post">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend uk-text-center">Sign in</legend>
+                    <p>メールアドレスとパスワードを入力して登録を完了してください。</p>
+                    <div class="uk-margin-small-top">
+                        <label class="uk-form-label" for="email">メールアドレス</label>
+                        <div class="uk-form-controls">
+                            <input id="email" class="uk-input uk-width-1-1" type="text" th:field="*{email}" placeholder="email"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin-small-top">
+                        <label class="uk-form-label" for="password">パスワード</label>
+                        <div class="uk-form-controls">
+                            <input id="password" class="uk-input uk-width-1-1" type="password" th:field="*{password}" />
+                        </div>
+                    </div>
+                    <button type="submit" value="login" class="uk-margin-small-top uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">登録</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

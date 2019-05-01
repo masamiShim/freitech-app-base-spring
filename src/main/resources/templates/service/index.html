@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/authorized.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>トップ</title>
+</head>
+<body>
+<th:block layout:fragment="contents">
+    <div class="uk-margin-medium-top">
+        <h2>月間サマリ</h2>
+        <ul class="uk-child-width-expand" uk-tab>
+            <li class="uk-active"><a href="#">系統1</a></li>
+            <li><a href="#">系統2</a></li>
+            <li><a href="#">系統3</a></li>
+            <li><a href="#">系統4</a></li>
+            <li><a href="#">系統5</a></li>
+            <li><a href="#">系統6</a></li>
+        </ul>
+        <div class="uk-column-1-1">
+            <div id="chart"></div>
+        </div>
+        <div class="uk-column-1-1 uk-margin-medium-top">
+            <table class="uk-table uk-table-small uk-table-striped uk-table-justify">
+                <caption>発電量サマリ</caption>
+                <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>発電量[kw]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2019/04/01</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>2019/04/02</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>2019/04/03</td>
+                    <td>100</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript" th:src="@{/js/index/IndexChart.js}"></script>
+        <script>
+            var data = [
+                ['data1', 30, 200, 100, 400, 15, 250, 20, 100, 40, 150, 25, 200, 10, 400, 15, 250, 20, 100, 40, 150, 25],
+                ['data2', 30, 20, 100, 40, 150, 25, 200, 10, 400, 15, 250, 20, 100, 40, 150, 25, 200, 10, 400, 15, 250],
+            ];
+            var chart = new IndexChart("#chart", data);
+        </script>
+    </div>
+</th:block>
+</body>
+</html>
