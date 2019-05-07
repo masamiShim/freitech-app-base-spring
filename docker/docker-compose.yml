@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  # MySQL
+  db:
+    image: mysql:5.7
+    container_name: mysql_host
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: freitech
+      MYSQL_USER: freitech
+      MYSQL_PASSWORD: ft_033
+      TZ: 'Asia/Tokyo'
+    # sslが有効になってるとコネクション切断時のエラーが図れるので0にして抑止
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --ssl=0
+    volumes:
+    - ./docker/db/mysql/data:/var/lib/mysql
+    - ./docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./docker/db/mysql/sql:/docker-entrypoint-initdb.d
+    ports:
+    - 3360:3306
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1@sha256:4b945a65ffef04f317bba80dadb6557c3aa3a124e5b6c1ec65b53dde77846527
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    expose:
+      - 9200
+    environment:
+      discovery.type: single-node
