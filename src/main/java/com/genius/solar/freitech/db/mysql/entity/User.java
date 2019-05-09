@@ -25,12 +25,14 @@ public class User extends SecurityAuditor implements UserDetails {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Id
+    @Column(name = "userId")
     private String userId;
 
     @Embedded
     private Email email;
 
     @Embedded
+    @Column(name = "password")
     private Password password;
 
     @Column(name = "expired")
@@ -41,6 +43,10 @@ public class User extends SecurityAuditor implements UserDetails {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "userId")
+    private UserRole userRole;
 
     public User(Email email, Password password) {
         this.email = email;

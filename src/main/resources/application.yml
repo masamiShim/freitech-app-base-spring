@@ -4,13 +4,16 @@ elasticsearch:
     port: 9200
 application:
   demo: false
+  setting:
+    use:
+      elasticsearch: false
 spring:
   thymeleaf:
     enable-spring-el-compiler: true
     encoding: UTF-8
     cache: false
   datasource:
-    url: jdbc:mysql://localhost:3360/freitech
+    url: jdbc:mysql://localhost:3306/freitech?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: freitech
     password: ft_033
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,6 +21,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
       properties:
         hibernate:
           dialect: org.hibernate.dialect.MySQL5Dialect

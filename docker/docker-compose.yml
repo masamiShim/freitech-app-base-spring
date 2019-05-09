@@ -11,7 +11,7 @@ services:
       MYSQL_USER: freitech
       MYSQL_PASSWORD: ft_033
       TZ: 'Asia/Tokyo'
-    # ssl‚ª—LŒø‚É‚È‚Á‚Ä‚é‚ÆƒRƒlƒNƒVƒ‡ƒ“Ø’f‚ÌƒGƒ‰[‚ª}‚ê‚é‚Ì‚Å0‚É‚µ‚Ä—}~
+    # ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼å‡ºã‚‹ã®ã§ssl=0æŒ‡å®š
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --ssl=0
     volumes:
     - ./docker/db/mysql/data:/var/lib/mysql

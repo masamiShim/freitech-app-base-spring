@@ -1,6 +1,8 @@
 HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+### docker db data ###
+/docker/db/
 
 ### STS ###
 .apt_generated
